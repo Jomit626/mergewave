@@ -4,15 +4,8 @@ project(mergewave VERSION 0.0.0 LANGUAGES CXX)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Qt5
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED on)
-
-set(CMAKE_AUTOMOC on)
-set(CMAKE_AUTORCC on)
-set(CMAKE_AUTOUIC on)
-
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 # verilog vcd lib
 add_custom_target(verilog-vcd-parser-srcs
@@ -32,9 +25,27 @@ include_directories(thirdparty/verilog-vcd-parser/build)
 add_library(verilog-vcd-parser ${VCD_PARSER_SOURCES})
 add_dependencies(verilog-vcd-parser verilog-vcd-parser-srcs)
 
+# svlang
+set(SLANG_INCLUDE_TESTS off)
+set(SLANG_INCLUDE_INSTALL off)
+
+add_subdirectory(thirdparty/slang)
+
+set_target_properties(slangruntime PROPERTIES EXCLUDE_FROM_ALL True)
+set_target_properties(slangcompiler PROPERTIES EXCLUDE_FROM_ALL True)
+
+# Qt5
+set(CMAKE_AUTOMOC on)
+set(CMAKE_AUTORCC on)
+set(CMAKE_AUTOUIC on)
+
+find_package(Qt5 COMPONENTS Widgets REQUIRED)
+
+# mergewave
 aux_source_directory(src SOURCES)
 add_executable(mergewave ${SOURCES})
 
-target_link_libraries(mergewave Qt5::Widgets)
-target_link_libraries(mergewave verilog-vcd-parser)
+target_link_libraries(mergewave PUBLIC Qt5::Widgets)
+target_link_libraries(mergewave PUBLIC verilog-vcd-parser)
+target_link_libraries(mergewave PUBLIC slangparser)
 

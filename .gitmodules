@@ -1,3 +1,6 @@
 [submodule "thirdparty/verilog-vcd-parser"]
 	path = thirdparty/verilog-vcd-parser
 	url = git@github.com:Jomit626/verilog-vcd-parser.git
+[submodule "thirdparty/slang"]
+	path = thirdparty/slang
+	url = git@github.com:MikePopoloski/slang.git
