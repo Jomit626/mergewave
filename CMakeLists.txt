@@ -24,8 +24,7 @@ set(VCD_PARSER_SOURCES
     thirdparty/verilog-vcd-parser/src/VCDFileParser.cpp
     thirdparty/verilog-vcd-parser/src/VCDValue.cpp
     thirdparty/verilog-vcd-parser/build/VCDScanner.cpp
-    thirdparty/verilog-vcd-parser/build/VCDParser.cpp
-    )
+    thirdparty/verilog-vcd-parser/build/VCDParser.cpp)
 
 include_directories(thirdparty/verilog-vcd-parser/src)
 include_directories(thirdparty/verilog-vcd-parser/build)
