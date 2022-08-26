@@ -1,0 +1,3 @@
+[submodule "thirdparty/verilog-vcd-parser"]
+	path = thirdparty/verilog-vcd-parser
+	url = git@github.com:Jomit626/verilog-vcd-parser.git
