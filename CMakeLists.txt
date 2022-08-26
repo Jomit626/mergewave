@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED on)
 
 # verilog vcd lib
-add_custom_target(verilog-vcd-parser-srcs
+execute_process(
   COMMAND make parser-srcs
   WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/thirdparty/verilog-vcd-parser)
 
@@ -23,7 +23,6 @@ include_directories(thirdparty/verilog-vcd-parser/src)
 include_directories(thirdparty/verilog-vcd-parser/build)
 
 add_library(verilog-vcd-parser ${VCD_PARSER_SOURCES})
-add_dependencies(verilog-vcd-parser verilog-vcd-parser-srcs)
 
 # svlang
 set(SLANG_INCLUDE_TESTS off)
