@@ -4,6 +4,7 @@
 
 !src
 !thirdparty
+!doc
 
 !.gitignore
 !CMakeLists.txt
