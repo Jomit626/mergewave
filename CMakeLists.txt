@@ -33,6 +33,9 @@ add_subdirectory(thirdparty/slang)
 set_target_properties(slangruntime PROPERTIES EXCLUDE_FROM_ALL True)
 set_target_properties(slangcompiler PROPERTIES EXCLUDE_FROM_ALL True)
 
+# rapidjson
+include_directories(thirdparty/rapidjson/include)
+
 # Qt5
 set(CMAKE_AUTOMOC on)
 set(CMAKE_AUTORCC on)

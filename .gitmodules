@@ -4,3 +4,6 @@
 [submodule "thirdparty/slang"]
 	path = thirdparty/slang
 	url = git@github.com:MikePopoloski/slang.git
+[submodule "thirdparty/rapidjson"]
+	path = thirdparty/rapidjson
+	url = git@github.com:Tencent/rapidjson.git
