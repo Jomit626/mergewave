@@ -45,6 +45,7 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 # mergewave
 aux_source_directory(src SOURCES)
+aux_source_directory(src/trace SOURCES)
 add_executable(mergewave ${SOURCES})
 
 target_link_libraries(mergewave PUBLIC Qt5::Widgets)
