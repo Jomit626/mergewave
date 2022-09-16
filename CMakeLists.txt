@@ -29,26 +29,30 @@ set(SLANG_INCLUDE_TESTS off)
 set(SLANG_INCLUDE_INSTALL off)
 
 add_subdirectory(thirdparty/slang)
-
 set_target_properties(slangruntime PROPERTIES EXCLUDE_FROM_ALL True)
-set_target_properties(slangcompiler PROPERTIES EXCLUDE_FROM_ALL True)
 
 # rapidjson
 include_directories(thirdparty/rapidjson/include)
 
-# Qt5
-set(CMAKE_AUTOMOC on)
-set(CMAKE_AUTORCC on)
-set(CMAKE_AUTOUIC on)
+# logger
+add_subdirectory(thirdparty/spdlog)
 
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+# Qt5
+#set(CMAKE_AUTOMOC on)
+#set(CMAKE_AUTORCC on)
+#set(CMAKE_AUTOUIC on)
+
+# find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 # mergewave
 aux_source_directory(src SOURCES)
 aux_source_directory(src/trace SOURCES)
 add_executable(mergewave ${SOURCES})
 
-target_link_libraries(mergewave PUBLIC Qt5::Widgets)
+#target_link_libraries(mergewave PUBLIC Qt5::Widgets)
 target_link_libraries(mergewave PUBLIC verilog-vcd-parser)
-target_link_libraries(mergewave PUBLIC slangparser)
+target_link_libraries(mergewave PUBLIC slangcompiler)
+target_link_libraries(mergewave PUBLIC spdlog::spdlog)
+
+set_target_properties(mergewave PROPERTIES LINK_FLAGS_RELEASE -s)
 
